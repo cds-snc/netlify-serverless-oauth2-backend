@@ -4,20 +4,20 @@ provider:
   runtime: nodejs6.10
   stage: ${opt:stage, self:custom.defaultStage}
   environment:
-    GIT_HOSTNAME: "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/GIT_HOSTNAME"
-    OAUTH_TOKEN_PATH: "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/OAUTH_TOKEN_PATH"
-    OAUTH_AUTHORIZE_PATH: "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/OAUTH_AUTHORIZE_PATH"
-    OAUTH_CLIENT_ID: "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/OAUTH_CLIENT_ID"
-    OAUTH_CLIENT_SECRET:  "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/OAUTH_CLIENT_SECRET"
-    REDIRECT_URL: "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/REDIRECT_URL"
-    OAUTH_SCOPES: "/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/OAUTH_SCOPES"
+    GIT_HOSTNAME: "/cds-website/oauth/${opt:stage, self:provider.stage}/GIT_HOSTNAME"
+    OAUTH_TOKEN_PATH: "/cds-website/oauth/${opt:stage, self:provider.stage}/OAUTH_TOKEN_PATH"
+    OAUTH_AUTHORIZE_PATH: "/cds-website/oauth/${opt:stage, self:provider.stage}/OAUTH_AUTHORIZE_PATH"
+    OAUTH_CLIENT_ID: "/cds-website/oauth/${opt:stage, self:provider.stage}/OAUTH_CLIENT_ID"
+    OAUTH_CLIENT_SECRET:  "/cds-website/oauth/${opt:stage, self:provider.stage}/OAUTH_CLIENT_SECRET"
+    REDIRECT_URL: "/cds-website/oauth/${opt:stage, self:provider.stage}/REDIRECT_URL"
+    OAUTH_SCOPES: "/cds-website/oauth/${opt:stage, self:provider.stage}/OAUTH_SCOPES"
     TZ: "utc"
   iamRoleStatements:
     - Effect: Allow
       Action:
         - ssm:DescribeParameters
         - ssm:GetParameters
-      Resource: "arn:aws:ssm:${opt:region, self:provider.region}:*:parameter/ctrl-alt-del/oauth/${opt:stage, self:provider.stage}/*"
+      Resource: "arn:aws:ssm:${opt:region, self:provider.region}:*:parameter/cds-website/oauth/${opt:stage, self:provider.stage}/*"
     - Effect: Allow
       Action:
         - kms:Decrypt
@@ -26,9 +26,9 @@ provider:
 custom:
   defaultStage: dev
   kms_key:
-    "us-east-1":
-      prod: "01660d80-64fb-4444-9b21-bb15ac2f97ec"
-      dev: "foo"
+    "ca-central-1":
+      prod: "KMS_KEY_ID"
+      dev: "KMS_KEY_ID"
 
 functions:
   auth:
