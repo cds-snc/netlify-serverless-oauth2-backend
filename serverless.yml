@@ -27,8 +27,8 @@ custom:
   defaultStage: dev
   kms_key:
     "ca-central-1":
-      prod: "KMS_KEY_ID"
-      dev: "KMS_KEY_ID"
+      prod: "${opt:key}"
+      dev: "${opt:key}"
 
 functions:
   auth:
