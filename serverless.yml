@@ -24,9 +24,9 @@ provider:
       Resource: "arn:aws:kms:${opt:region, self:provider.region}:*:key/${self:custom.kms_key.${opt:region, self:provider.region}.${self:provider.stage}}"
 
 custom:
-  defaultStage: dev
+  defaultStage: production
   kms_key:
-    "ca-central-1":
+    "us-east-1":
       prod: "${opt:key}"
       dev: "${opt:key}"
 
