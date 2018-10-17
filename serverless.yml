@@ -27,7 +27,7 @@ custom:
   defaultStage: production
   kms_key:
     "us-east-1":
-      prod: "${opt:key}"
+      production: "${opt:key}"
       dev: "${opt:key}"
 
 functions:
